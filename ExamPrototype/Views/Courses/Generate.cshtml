@@ -1,0 +1,25 @@
+﻿@model ExamPrototype.Models.Course
+@{
+    ViewBag.Title = "Generate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Generate</h2>
+@using (Html.BeginForm("Generate", "Courses", FormMethod.Post))
+{
+    @Html.HiddenFor(c=>c.Course_Id)
+    <div class="form-group">
+        <label for="inputAge3" class="col-sm-2 control-label">Number Of Question</label>
+        <div class="col-sm-10">
+
+            <input type="number" class="form-control" id="inputAge3" name="NumberOfQ" placeholder="number" >
+            <br />
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </div>
+    </div>
+}

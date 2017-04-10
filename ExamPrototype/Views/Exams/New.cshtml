@@ -1,0 +1,47 @@
+﻿@model ExamPrototype.ExamViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New</h2>
+@using (Html.BeginForm("Save", "Exams", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "Invalid Registration")
+    <div class="form-group">
+        @Html.LabelFor(m => m.Exam.Duration)
+        @Html.TextBoxFor(m => m.Exam.Duration, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Exam.Duration)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Exam.Subject)
+        @Html.TextBoxFor(m => m.Exam.Subject, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Exam.Subject)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Exam.from)
+        @Html.TextBoxFor(m => m.Exam.from, new { @class = "form-control", @type = "time" })
+        @Html.ValidationMessageFor(m => m.Exam.from)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Exam.to)
+        @Html.TextBoxFor(m => m.Exam.to, new { @class = "form-control", @type = "time" })
+        @Html.ValidationMessageFor(m => m.Exam.to)
+    </div>
+    <div class="form-group">
+        <label for="inputNq" class="control-label">Number Of Question</label>
+        <input type="number" class="form-control" id="inputNq" name="NumberOfQ" placeholder="Number Of Question">
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Exam.Course_key)
+        @Html.DropDownListFor(m => m.Exam.Course_key, new SelectList(Model.CourseList, "Course_Id", "Name"), "Select Course", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Exam.Course_key)
+    </div>
+    
+    @Html.HiddenFor(mm => mm.Exam.Exam_id)
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Save" class="btn btn-success " />
+}
+
+

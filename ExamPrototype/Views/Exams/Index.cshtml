@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ExamPrototype.Models.Exam>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Exam Subject</th>
+            <th>Exam Duration</th>
+            <th>Course</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Subject</td>
+                <td>@item.Duration</td>
+                <td>@item.Courses.Name</td>
+                <td>
+                    @Html.ActionLink("Assign", "Assign",new { exid=item.Exam_id}) |
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
